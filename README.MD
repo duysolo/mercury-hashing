@@ -29,9 +29,12 @@ HashingModule.forRootAsync({
 - The `secretKey` should be 32 characters string.
 
 ## Sample usages
-```typescript
-// import { HashTextService } from '@mercury/hashing'
 
+```typescript
+import { HashTextService } from '@mercury-labs/hashing'
+import { Injectable } from '@nestjs/common'
+
+@Injectable()
 export class TestService {
   public constructor(private readonly _hashTextService: HashTextService) {
   }
