@@ -1,10 +1,14 @@
 {
   "name": "@mercury-labs/hashing",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Mercury framework hashing library",
+  "author": "duysolo <duypt.dev@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/duysolo/hashing"
+  },
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
-  "author": "duysolo <duypt.dev@gmail.com>",
   "private": false,
   "license": "MIT",
   "scripts": {
