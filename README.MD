@@ -3,7 +3,7 @@
 
 ## Install
 ```shell
-npm install --save @mercury/hashing
+npm install --save @mercury-labs/hashing
 ```
 
 ## Register

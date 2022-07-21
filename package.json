@@ -1,5 +1,5 @@
 {
-  "name": "@mercury/hashing",
+  "name": "@mercury-labs/hashing",
   "version": "1.0.0",
   "description": "Mercury framework hashing library",
   "main": "dist/index.js",
