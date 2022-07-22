@@ -1,6 +1,6 @@
 {
   "name": "@mercury-labs/hashing",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Mercury framework hashing library",
   "author": "duysolo <duypt.dev@gmail.com>",
   "repository": {
@@ -53,8 +53,7 @@
     "typescript": "^4.3.5"
   },
   "peerDependencies": {
-    "@nestjs/common": "^9.0.0 | ^8.0.0 | ^7.0.0",
-    "@nestjs/testing": "^9.0.0 | ^8.0.0 | ^7.0.0"
+    "@nestjs/common": "^9.0.0 | ^8.0.0 | ^7.0.0"
   },
   "jest": {
     "moduleFileExtensions": [
