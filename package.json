@@ -1,12 +1,17 @@
 {
   "name": "@mercury-labs/hashing",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Mercury framework hashing library",
   "author": "duysolo <duypt.dev@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/duysolo/hashing"
+    "url": "https://github.com/duysolo/mercury-hashing"
   },
+  "keywords": [
+    "mercury-labs",
+    "string encode/decode",
+    "nestjs encode/decode string"
+  ],
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "private": false,
@@ -29,7 +34,6 @@
   },
   "devDependencies": {
     "@rushstack/eslint-config": "~2.6.1",
-    "@nestjs/schematics": "^9.0.0",
     "@nestjs/testing": "^9.0.0",
     "@types/jest": "27.0.2",
     "@types/supertest": "^2.0.11",
@@ -47,6 +51,10 @@
     "ts-node": "^10.0.0",
     "tsconfig-paths": "^3.10.1",
     "typescript": "^4.3.5"
+  },
+  "peerDependencies": {
+    "@nestjs/common": "^9.0.0 | ^8.0.0 | ^7.0.0",
+    "@nestjs/testing": "^9.0.0 | ^8.0.0 | ^7.0.0"
   },
   "jest": {
     "moduleFileExtensions": [
