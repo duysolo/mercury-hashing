@@ -1,6 +1,6 @@
 {
   "name": "@mercury-labs/hashing",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Mercury framework hashing library",
   "author": "duysolo <duypt.dev@gmail.com>",
   "repository": {
