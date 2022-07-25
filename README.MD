@@ -40,9 +40,19 @@ export class TestService {
   }
 
   public sample() {
-    const hashed = this._hashTextService.encode('Duy SOLO')
+    const hashed = this._hashTextService.encode('John Doe')
 
     const decoded = this._hashTextService.decode(hashed)
+    
+    const hashedObj = this._hashTextService.encode({
+      name: 'John Doe',
+      gender: 'male',
+    })
+
+    const decodedObj = this._hashTextService.decodeJSON<{
+      name: string,
+      gender: string
+    }>(hashedObj)
 
     return {
       hashed,
