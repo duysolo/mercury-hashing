@@ -63,4 +63,22 @@ export class HashTextService {
       return undefined
     }
   }
+
+  public encodeJSON(obj: any): string | undefined {
+    try {
+      return this.encode(JSON.stringify(obj))
+    } catch {
+      return undefined
+    }
+  }
+
+  public decodeJSON<T = any>(hashedObj: string): T | undefined {
+    try {
+      const decodedText = this.decode(hashedObj)
+
+      return decodedText ? JSON.parse(decodedText) : undefined
+    } catch {
+      return undefined
+    }
+  }
 }
