@@ -10,6 +10,7 @@ npm install --save @mercury-labs/hashing
 ```typescript
 HashingModule.forRoot({
   secretKey: 'GOo7cVgnCBnR8TvXIgvamXNb85cPVtJi',
+  global: false
 })
 ```
 
@@ -22,6 +23,7 @@ HashingModule.forRootAsync({
     }
   },
   inject: [ConfigService],
+  global: false
 })
 ```
 
