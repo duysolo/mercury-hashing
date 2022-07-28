@@ -11,12 +11,12 @@ export interface IHashingOptions {
 export type HashingModuleOptionsAsync = Pick<ModuleMetadata, 'imports'> & {
   useFactory: (...args: any[]) => Promise<IHashingOptions> | IHashingOptions
   inject?: any[]
-  global: boolean
+  global?: boolean
 }
 
 @Module({})
 export class HashingModule {
-  public static forRoot(options: IHashingOptions & { global: boolean }): DynamicModule {
+  public static forRoot(options: IHashingOptions & { global?: boolean }): DynamicModule {
     return {
       module: HashingModule,
       providers: [{
@@ -24,7 +24,7 @@ export class HashingModule {
         useValue: new HashTextService(options)
       }],
       exports: [HashTextService],
-      global: options.global,
+      global: options.global || false,
     }
   }
 
