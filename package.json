@@ -10,7 +10,10 @@
   "keywords": [
     "mercury-labs",
     "string encode/decode",
-    "nestjs encode/decode string"
+    "nestjs encode/decode string",
+    "nest nestjs encode string decode string",
+    "encode string",
+    "decode string"
   ],
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -74,9 +77,6 @@
     ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
-  },
-  "publishConfig": {
-    "duysolo:registry": "https://npm.pkg.github.com"
   },
   "bugs": {
     "url": "https://github.com/duysolo/mercury-hashing/issues"
