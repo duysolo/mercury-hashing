@@ -3,7 +3,7 @@
 
 ## Install
 ```shell
-npm install --save @mercury-labs/hashing
+npm install --save @mercury-labs/nest-hashing
 ```
 
 ## Register
@@ -35,7 +35,7 @@ HashingModule.forRootAsync({
 ## Sample usages
 
 ```typescript
-import { HashTextService } from '@mercury-labs/hashing'
+import { HashTextService } from '@mercury-labs/nest-hashing'
 import { Injectable } from '@nestjs/common'
 
 @Injectable()
