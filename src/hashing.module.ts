@@ -1,11 +1,12 @@
 import { DynamicModule, Module, Provider } from '@nestjs/common'
 import { ModuleMetadata } from '@nestjs/common/interfaces'
-import { HashTextService } from './'
+import { HashTextService } from './index'
 
 const HASHING_MODULE_OPTIONS: symbol = Symbol('HASHING_MODULE_OPTIONS')
 
 export interface IHashingOptions {
-  secretKey: string
+  secretKey?: string
+  enabled?: boolean
 }
 
 export type HashingModuleOptionsAsync = Pick<ModuleMetadata, 'imports'> & {
@@ -16,13 +17,21 @@ export type HashingModuleOptionsAsync = Pick<ModuleMetadata, 'imports'> & {
 
 @Module({})
 export class HashingModule {
-  public static forRoot(options: IHashingOptions & { global?: boolean }): DynamicModule {
+  public static forRoot(
+    options: IHashingOptions & { global?: boolean }
+  ): DynamicModule {
+    const { enabled = true } = options
+
     return {
       module: HashingModule,
-      providers: [{
-        provide: HashTextService,
-        useValue: new HashTextService(options)
-      }],
+      providers: enabled
+        ? [
+          {
+            provide: HashTextService,
+            useValue: new HashTextService({ ...options, enabled }),
+          },
+        ]
+        : [],
       exports: [HashTextService],
       global: options.global || false,
     }
@@ -40,7 +49,12 @@ export class HashingModule {
     const hashTextProvider: Provider = {
       provide: HashTextService,
       useFactory: (options: IHashingOptions) => {
-        return new HashTextService(options)
+        const { enabled = true } = options
+
+        return enabled ? new HashTextService({
+          ...options,
+          enabled
+        }) : undefined
       },
       inject: [HASHING_MODULE_OPTIONS],
     }

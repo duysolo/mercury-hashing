@@ -21,7 +21,7 @@ export class HashTextService {
   }
 
   public encode(text: string): string {
-    if (!text) {
+    if (!text || !this._options.enabled || !this._options.secretKey) {
       return ''
     }
 
@@ -44,6 +44,10 @@ export class HashTextService {
   }
 
   public decode(hashedText: string): string | undefined {
+    if (!hashedText || !this._options.enabled || !this._options.secretKey) {
+      return ''
+    }
+
     try {
       const hash: IHash = JSON.parse(
         Buffer.from(hashedText, 'base64').toString('utf-8')
