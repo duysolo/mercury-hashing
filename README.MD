@@ -10,7 +10,8 @@ npm install --save @mercury-labs/hashing
 ```typescript
 HashingModule.forRoot({
   secretKey: 'GOo7cVgnCBnR8TvXIgvamXNb85cPVtJi',
-  global: false
+  global: false,
+  enabled: true,
 })
 ```
 
@@ -20,6 +21,7 @@ HashingModule.forRootAsync({
   useFactory: (config: ConfigService) => {
     return {
       secretKey: config.get('HASHING_SECRET_KEY') || '',
+      enabled: true,
     }
   },
   inject: [ConfigService],
@@ -45,7 +47,7 @@ export class TestService {
     const hashed = this._hashTextService.encode('John Doe')
 
     const decoded = this._hashTextService.decode(hashed)
-    
+
     const hashedObj = this._hashTextService.encodeJSON({
       name: 'John Doe',
       gender: 'male',

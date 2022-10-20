@@ -21,7 +21,6 @@ describe('HashingModule', () => {
           useFactory: () => {
             return {
               secretKey: 'GOo7cVgnCBnR8TvXIgvamXNb85cPVtJi',
-              // enabled: true,
             }
           }
         })
