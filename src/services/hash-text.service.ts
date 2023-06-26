@@ -1,6 +1,6 @@
 import { BadRequestException, Injectable } from '@nestjs/common'
 import crypto from 'crypto'
-import { IHashingOptions } from '../'
+import { IHashingOptions } from '../../hashing.module'
 
 interface IHash {
   iv: string
@@ -12,7 +12,10 @@ export class HashTextService {
   private readonly _algorithm: string = 'aes-256-ctr'
 
   public constructor(private readonly _options: IHashingOptions) {
-    if (!this._options?.secretKey || this._options.secretKey.length !== 32) {
+    if (
+      _options.enabled &&
+      (!_options?.secretKey || _options.secretKey.length !== 32)
+    ) {
       throw new BadRequestException(
         'INVALID_HASHING_SECRET_KEY',
         'Secret key is required and should be 32 characters'
@@ -20,9 +23,9 @@ export class HashTextService {
     }
   }
 
-  public encode(text: string): string {
-    if (!text || !this._options.enabled || !this._options.secretKey) {
-      return ''
+  public encode(textToEncode: string): string {
+    if (!textToEncode || !this._options.enabled || !this._options.secretKey) {
+      return textToEncode
     }
 
     const iv = crypto.randomBytes(16)
@@ -33,7 +36,10 @@ export class HashTextService {
       iv
     )
 
-    const encrypted = Buffer.concat([cipher.update(text), cipher.final()])
+    const encrypted = Buffer.concat([
+      cipher.update(textToEncode),
+      cipher.final(),
+    ])
 
     return Buffer.from(
       JSON.stringify({
@@ -45,7 +51,7 @@ export class HashTextService {
 
   public decode(hashedText: string): string | undefined {
     if (!hashedText || !this._options.enabled || !this._options.secretKey) {
-      return ''
+      return hashedText
     }
 
     try {
